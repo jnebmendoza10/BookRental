@@ -1,9 +1,7 @@
 import { Express, Request, Response } from 'express';
-import BodyParser from 'body-parser';
 import RateLimiter from 'express-rate-limit';
 import Helmet from 'helmet';
 import CORS from 'cors';
-
 import Loader from './Loader';
 import Logger from '../lib/Logger';
 
@@ -27,14 +25,12 @@ export default class MiddlewareLoader implements Loader {
 
     initCors(server: Express): void {
         server.use(CORS());
-        server.options('*', CORS());
     }
 
     init(server: Express, logger: Logger): boolean {
         try {
             this.initRateLimiter(server, logger);
             this.initCors(server);
-            server.use(BodyParser.json());
             server.use(Helmet());
 
             return true;
