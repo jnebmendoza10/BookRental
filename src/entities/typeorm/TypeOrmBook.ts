@@ -1,10 +1,8 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
-
-import { Book } from '../Book';
 import { TypeOrmUser } from './TypeormUser';
 
 @Entity()
-export class TypeOrmBook implements Book {
+export class TypeOrmBook {
     @PrimaryGeneratedColumn('uuid')
     id!: string;
 
@@ -16,6 +14,9 @@ export class TypeOrmBook implements Book {
 
     @Column('varchar')
     ISBN!: string;
+
+    @Column('boolean')
+    isAvailable: boolean;
 
     @ManyToOne(
         () => TypeOrmUser,

@@ -1,10 +1,9 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 import { Role } from '../Role';
-import { User } from '../User';
 import { TypeOrmBook } from './TypeormBook';
 
 @Entity()
-export class TypeOrmUser implements User {
+export class TypeOrmUser {
     @PrimaryGeneratedColumn('uuid')
     id!: string;
 
